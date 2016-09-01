@@ -1,0 +1,24 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf index</title>
+</head>
+<body>
+<a th:href="@{http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#creating-and-configuring-the-template-engine}" th:target="_blank">thyemleaf docs</a>
+<div th:class="content">...</div>
+<a href="user.html" th:href="@{http://localhost:8088/users/5}">absolute url:user.html</a>
+<a href="user.html" th:href="@{/users/5}">relative url:user.html</a>
+"${hello}":<p th:text="${hello}"></p>
+"*{hello}":<p th:text="*{hello}"></p>
+<p th:text="#{hello}"></p>
+<p th:text="${#locale.country}"/>
+<p th:text="${#dates}"/>
+<p th:text="${#calendars.format(today,'dd MMMM yyyy')}"/>
+
+<!--<p th:text="${#ctx}"/>-->
+<!--<p th:text="${#vars}" />-->
+<p th:text="#{home.welcome}">Welcome to index.html</p>
+</body>
+</html>
