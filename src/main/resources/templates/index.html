@@ -4,8 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Thymeleaf index</title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.0/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+
+
 </head>
 <body>
+<a href="/add.html" th:href="@{/article/add}" >发布</a>
+<div class="container">
+    <div th:each="article : ${articleList}">
+        <a href="article.html" th:href="@{'/article/'+${article.id}}"><h1 th:text="${article.title}"></h1></a>
+        <span th:text="${#calendars.format(article.createTime,'dd MMMM yyyy')}"></span>
+        <p th:text="${article.content}"></p>
+    </div>
+</div>
+
 <a th:href="@{http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#creating-and-configuring-the-template-engine}" th:target="_blank">thyemleaf docs</a>
 <div th:class="content">...</div>
 <a href="user.html" th:href="@{http://localhost:8088/users/5}">absolute url:user.html</a>

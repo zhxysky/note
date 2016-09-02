@@ -1,6 +1,8 @@
 package com.zhxy.note;
 
+import com.zhxy.note.entities.Article;
 import com.zhxy.note.entities.Users;
+import com.zhxy.note.repositories.ArticleRepository;
 import com.zhxy.note.repositories.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +12,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+
+import java.util.Date;
 
 /**
  * Created by zhxy on 2016/8/16.
@@ -25,7 +29,21 @@ public class SampleController {
     }
 
     @Bean
-    public CommandLineRunner demo(final UsersRepository repository) {
+    public CommandLineRunner articleDemo(final ArticleRepository articleRepository) {
+        return (args) -> {
+            articleRepository.save(new Article("title1", "content1", "catalog1", new Date()));
+            articleRepository.save(new Article("title2", "content2", "catalog2", new Date()));
+            articleRepository.save(new Article("title3", "content3", "catalog3", new Date()));
+            log.info("Article found with findAll");
+            log.info("-----------------------");
+            for(Article article:articleRepository.findAll()) {
+                log.info(article.toString());
+            }
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demo(final UsersRepository repository,final ArticleRepository articleRepository) {
         return (args) -> {
             repository.save(new Users("zhxy"));
             repository.save(new Users("zhxy"));
@@ -48,6 +66,10 @@ public class SampleController {
             for(Users user2:repository.findByName("www")) {
                 log.info(user2.toString());
             }
+
+
+
+
         };
     }
 }

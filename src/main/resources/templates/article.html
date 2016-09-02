@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${article.title}"></title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.0/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+
+
+</head>
+<body>
+<div class="container">
+        <span th:text="${article.id}"></span> <a href="" th:href="@{'/article/'+${article.id}}"><h1 th:text="${article.title}"></h1></a>
+        <span th:text="${#calendars.format(article.createTime,'dd MMMM yyyy')}"></span>
+        <p th:utext="${article.content}"></p>
+</div>
+
+</body>
+</html>

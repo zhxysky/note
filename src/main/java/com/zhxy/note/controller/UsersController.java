@@ -22,7 +22,7 @@ public class UsersController {
     @Autowired
     UsersRepository usersRepository;
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index(Map<String,Object> map) {
         map.put("hello", "Hello Thymeleaf");
         map.put("today", new Date());
