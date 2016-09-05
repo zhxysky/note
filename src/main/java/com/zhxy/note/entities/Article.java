@@ -19,6 +19,10 @@ public class Article {
     String title;
 
     String content;
+
+    String htmlContent;
+
+
     //目录 分类
     String catalog;
 
@@ -27,9 +31,10 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String content, String catalog, Date createTime) {
+    public Article(String title, String content, String htmlContent, String catalog, Date createTime) {
         this.title = title;
         this.content = content;
+        this.htmlContent = htmlContent;
         this.catalog = catalog;
         this.createTime = createTime;
     }
@@ -72,6 +77,14 @@ public class Article {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
     }
 
     @Override

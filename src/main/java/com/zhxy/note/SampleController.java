@@ -31,9 +31,9 @@ public class SampleController {
     @Bean
     public CommandLineRunner articleDemo(final ArticleRepository articleRepository) {
         return (args) -> {
-            articleRepository.save(new Article("title1", "content1", "catalog1", new Date()));
-            articleRepository.save(new Article("title2", "content2", "catalog2", new Date()));
-            articleRepository.save(new Article("title3", "content3", "catalog3", new Date()));
+            articleRepository.save(new Article("title1title1title1", "content1content1content1content1content1content1content1content1","content1content1content1content1content1content1content1content1", "catalog1", new Date()));
+            articleRepository.save(new Article("title2title2title2", "content2content2content2content2content2content2content2content2","content2content2content2content2content2content2content2content2", "catalog2", new Date()));
+            articleRepository.save(new Article("title3title3title3", "content3content3content3content3content3content3content3content3","content3content3content3content3content3content3content3content3", "catalog3", new Date()));
             log.info("Article found with findAll");
             log.info("-----------------------");
             for(Article article:articleRepository.findAll()) {

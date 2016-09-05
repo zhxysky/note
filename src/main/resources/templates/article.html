@@ -16,9 +16,26 @@
 </head>
 <body>
 <div class="container">
-        <span th:text="${article.id}"></span> <a href="" th:href="@{'/article/'+${article.id}}"><h1 th:text="${article.title}"></h1></a>
-        <span th:text="${#calendars.format(article.createTime,'dd MMMM yyyy')}"></span>
-        <p th:utext="${article.content}"></p>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <div th:include="header::page-header"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-8 column">
+            <div th:include="header::header"></div>
+            <h3 th:text="${article.title}">
+            </h3>
+            <p th:utext="${article.htmlContent}"></p>
+        </div>
+        <div class="col-md-4 column">
+            <div class="row clearfix">
+                <div th:include="right::blockquote"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

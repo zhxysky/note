@@ -49,15 +49,15 @@ public class ArticleController {
 
         Markdown mk = new Markdown();
         mk.transform(reader,writer);
-        String content = writer.toString();
+        String htmlContent = writer.toString();
 
         reader.close();
         writer.close();
 
-        System.out.println(content);
-        article.setContent(content);
+        System.out.println();
+        article.setHtmlContent(htmlContent);
         article = articleRepository.save(article);
         System.out.println(article.toString());
-        return "publish-result";
+        return "redirect:/article/"+article.getId();
     }
 }
