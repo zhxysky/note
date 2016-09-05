@@ -60,4 +60,31 @@ public class ArticleController {
         System.out.println(article.toString());
         return "redirect:/article/"+article.getId();
     }
+
+    @RequestMapping("/article/modify/{id}")
+    public String toedit(@PathVariable String id,ModelMap modelMap) {
+        Article article = articleRepository.findOne(Long.parseLong(id));
+        modelMap.put("article", article);
+        return "modify";
+    }
+
+    @RequestMapping("/article/update")
+    public String update(Article article) throws ParseException, IOException {
+        Reader reader = new StringReader(article.getContent());
+        Writer writer = new StringWriter();
+
+        Markdown mk = new Markdown();
+        mk.transform(reader,writer);
+        String htmlContent = writer.toString();
+
+        reader.close();
+        writer.close();
+
+        System.out.println();
+        article.setHtmlContent(htmlContent);
+        article.setCreateTime(articleRepository.findOne(article.getId()).getCreateTime());
+        article = articleRepository.save(article);
+        System.out.println(article.toString());
+        return "redirect:/article/"+article.getId();
+    }
 }

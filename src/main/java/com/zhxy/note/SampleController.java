@@ -42,34 +42,34 @@ public class SampleController {
         };
     }
 
-    @Bean
-    public CommandLineRunner demo(final UsersRepository repository,final ArticleRepository articleRepository) {
-        return (args) -> {
-            repository.save(new Users("zhxy"));
-            repository.save(new Users("zhxy"));
-            repository.save(new Users("www"));
-            repository.save(new Users("www"));
-            repository.save(new Users("www"));
-
-            log.info("Users found with findAll():");
-            log.info("-------------------------------");
-            for(Users user:repository.findAll()) {
-                log.info(user.toString());
-            }
-            Users user = repository.findOne(1);
-            log.info("User found with findOne():");
-            log.info("-------------------------");
-            log.info(user.toString());
-
-            log.info("Users found with findByName():");
-            log.info("--------------------------------");
-            for(Users user2:repository.findByName("www")) {
-                log.info(user2.toString());
-            }
-
-
-
-
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(final UsersRepository repository,final ArticleRepository articleRepository) {
+//        return (args) -> {
+//            repository.save(new Users("zhxy"));
+//            repository.save(new Users("zhxy"));
+//            repository.save(new Users("www"));
+//            repository.save(new Users("www"));
+//            repository.save(new Users("www"));
+//
+//            log.info("Users found with findAll():");
+//            log.info("-------------------------------");
+//            for(Users user:repository.findAll()) {
+//                log.info(user.toString());
+//            }
+//            Users user = repository.findOne(4);
+//            log.info("User found with findOne():");
+//            log.info("-------------------------");
+//            log.info(user.toString());
+//
+//            log.info("Users found with findByName():");
+//            log.info("--------------------------------");
+//            for(Users user2:repository.findByName("www")) {
+//                log.info(user2.toString());
+//            }
+//
+//
+//
+//
+//        };
+//    }
 }
