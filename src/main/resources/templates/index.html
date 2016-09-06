@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <title>Thymeleaf index</title>
 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.0.1/css/bootstrap.min.css"
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
           rel="stylesheet" media="screen" />
-
     <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.0/jquery.min.js"
-            th:src="@{/webjars/jquery/3.3.7-1/jquery.min.js}"></script>
+            th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
 
 
 
@@ -26,17 +25,19 @@
         </div>
     </div>
     <div class="row clearfix">
-        <div class="col-md-8 column">
-            <div th:include="header::header"></div>
-            <div th:each="article : ${articleList}">
-                <h3 th:text="${article.title}"></h3>
-                <span th:text="${#calendars.format(article.createTime,'dd MMMM yyyy')}"></span>
-                <p th:utext="${article.htmlContent}">
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                </p>
-                <p>
-                    <a class="btn" href="article.html" th:href="@{'/article/'+${article.id}}" th:target="_blank">View details »</a>
-                </p>
+        <div class="span12">
+            <div class="col-md-8 column">
+                <div th:include="header::header"></div>
+                <div th:each="article : ${articleList}">
+                    <h3 th:text="${article.title}"></h3>
+                    <span th:text="${#calendars.format(article.createTime,'dd MMMM yyyy')}"></span>
+                    <p th:utext="${article.htmlContent}">
+                        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                    </p>
+                    <p>
+                        <a class="btn" href="article.html" th:href="@{'/article/'+${article.id}}" th:target="_blank">View details »</a>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="col-md-4 column">

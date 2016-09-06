@@ -2,6 +2,7 @@ package com.zhxy.note.controller;
 
 import com.zhxy.note.entities.Article;
 import com.zhxy.note.repositories.ArticleRepository;
+import org.apache.catalina.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.tautua.markdownpapers.Markdown;
 import org.tautua.markdownpapers.parser.ParseException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by zhxy on 2016/9/2.
@@ -23,7 +27,7 @@ public class ArticleController {
 
     @RequestMapping("/")
     public String index(ModelMap modelMap){
-        modelMap.put("articleList", articleRepository.findAll());
+        modelMap.put("articleList", articleRepository.findAllOrderByIdDesc());
         return "index";
     }
 
@@ -87,4 +91,13 @@ public class ArticleController {
         System.out.println(article.toString());
         return "redirect:/article/"+article.getId();
     }
+
+    @RequestMapping(value = "/article/search")
+    public String search(HttpServletRequest request, HttpServletResponse response,ModelMap modelMap) {
+        String keyWord = request.getParameter("keyWord");
+        List<Article> list = articleRepository.findByTitleAndContent(keyWord);
+        modelMap.put("articleList", list);
+        return "index";
+    }
+
 }
